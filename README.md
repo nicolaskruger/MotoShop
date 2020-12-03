@@ -2,7 +2,8 @@
 
 ## :pushpin: Table of Contents
  * [Desciption](#book-Description)
-
+ * [Technology](#hammer_and_wrench-Technology)
+ * [Task](#scroll-Task)
 ## :book: Description 
 this repo is a simple CRUD(create, read, update, delete) of seling motorcycle web app.
 ## :hammer_and_wrench: Technology
@@ -12,7 +13,7 @@ this repo is a simple CRUD(create, read, update, delete) of seling motorcycle we
  * [css](https://www.w3schools.com/css/)
  * [mysql](https://www.mysql.com/)
  * [Express Framework](http://expressjs.com/en/)
-## :scroll: task
+## :scroll: Task
 - [ ] database with two tables, salesman and motocycle  
 - [ ] v1 show the description of one specifc motocycle, in this screen you can delete, motocycle
 - [ ] v2 screen to create  update motocycle. 
