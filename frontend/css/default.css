@@ -1,0 +1,13 @@
+:root{
+    font-family: 'Roboto', sans-serif;
+    --bcScreen: rgb(37, 37, 37)
+}
+h1,h2{
+    font-family: 'Oswald', sans-serif;
+}
+button{
+    font-family: 'Roboto', sans-serif;
+}
+html{
+    background-color: gray;
+}

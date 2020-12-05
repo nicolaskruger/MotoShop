@@ -1,0 +1,1 @@
+{"version":3,"file":"selerman.js","sourceRoot":"","sources":["../../src/model/selerman.ts"],"names":[],"mappings":";;AAAA,MAAa,QAAQ;IAKjB,YAAY,EAAW,EACnB,IAAa,EACb,WAAoB,EACpB,OAAgB;QACZ,IAAI,CAAC,EAAE,GAAE,EAAE,CAAC;QACZ,IAAI,CAAC,IAAI,GAAE,IAAI,CAAC;QAChB,IAAI,CAAC,WAAW,GAAE,WAAW,CAAC;QAC9B,IAAI,CAAC,OAAO,GAAE,OAAO,CAAC;IAC9B,CAAC;CACJ;AAdD,4BAcC"}

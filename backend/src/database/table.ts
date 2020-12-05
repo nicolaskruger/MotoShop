@@ -14,8 +14,7 @@ class Table extends TableGeneric{
         const sql = `create table if not exists selerMan (
             id int unsigned auto_increment primary key,
             name text not null,
-            description text not null,
-            imgPath text not null
+            description text not null
         )`;
 
         this.createTabel(sql,'selerMan')
@@ -26,7 +25,6 @@ class Table extends TableGeneric{
             name text not null,
             description text not null,
             idSeler int unsigned not null,
-            imgPath text not null,
             foreign key(idSeler) references selerMan(id)
         );`
         this.createTabel(sql,'motorcycle');
