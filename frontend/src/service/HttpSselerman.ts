@@ -1,3 +1,4 @@
+import { SelerMan } from "../model/selerman";
 import { HttpService } from "./HttpServices";
 
 export class HttpSselerman extends HttpService{
@@ -6,5 +7,8 @@ export class HttpSselerman extends HttpService{
     }
     getSelerByID(id:number){
         return this.get(`${this.selerRoute}${id}`)
+    }
+    postSeler(seler:SelerMan){
+        return this.postFD(`${this.selerRoute}`,seler.toFormData());
     }
 }

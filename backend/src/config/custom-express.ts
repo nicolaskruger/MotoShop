@@ -1,5 +1,4 @@
 import express from 'express';
-import fileupload from 'express-fileupload';
 import bodyParser from 'body-parser';
 import path from 'path';
 import routes from '../routes/routes'
@@ -12,7 +11,6 @@ app.set('clientPath',path.join(__dirname,'/../../../','frontend'));
 
 app.use('/',express.static(app.get('clientPath')));
 
-app.use(fileupload());
 
 app.use(bodyParser.urlencoded({extended:false}));
 

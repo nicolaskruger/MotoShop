@@ -1,0 +1,8 @@
+.ErroMsg{
+    color: red;
+    font-weight: bold;
+}
+.SuccessMsg{
+    color: aqua;
+    font-weight: bold;
+}

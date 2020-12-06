@@ -1,5 +1,15 @@
-<form action="" method="POST">
-    <input type="text" name="name">
-    <textarea name="description" id="" cols="30" rows="10"></textarea>
-    <input type="file" name="img" accept="image/*">
-</form>
+<div class="ISelerman">
+    <form class="ISelerman__form ISF" action="/selerman" method="POST" enctype="multipart/form-data">
+        <p class="SuccessMsg MsgSeler"></p>
+        <label for="name">Name</label> 
+        <p class="ErroMsg MsgSeler"></p>
+        <input class="InputSelerman inpS" type="text" name="name" required>
+        <label for="description">Descriptions</label>
+        <p class="ErroMsg MsgSeler"></p>
+        <textarea class="InputSelerman inpS" name="description" id="" cols="30" rows="10" required></textarea>
+        <label  for="imgSeler">Img</label>
+        <p class="ErroMsg MsgSeler"></p>
+        <input class="InputSelerman inpS" type="file" name="imgSeler" accept="image/*" required >
+        <button class="Push PushS">Send</button>
+    </form>
+</div>

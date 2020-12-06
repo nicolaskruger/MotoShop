@@ -15,9 +15,11 @@ class SelerManQuery{
         })
     }
     selectImg(id:number,res:Response){
-        let reg = new RegExp(`${id}.(png)|(jpg)|(jpeg)`);
-        let file = fs.readdirSync(`${SelerMan.dir}selerman/`).filter(s=>reg.test(s))[0];
-        res.sendFile(path.resolve(`${SelerMan.dir}selerman/${file}`))
+        const sql = `select imgPath from  selerMan where id = ${id}`;
+        connection.query(sql,(err,result)=>{
+            if(err) return res.status(400).json(err);
+            res.status(202).sendFile(path.resolve(`${SelerMan.dir}selerman/${result[0].imgPath}`))
+        })
     }
     select(id:number,res:Response){
         const sql = `select * from selerMan
@@ -28,11 +30,12 @@ class SelerManQuery{
         })
     }
     include(seler:SelerMan,res:Response){
-        const sql = `insert into selerMan (name,description)
-        values ('${seler.name}','${seler.description}')`;
+        if(!seler.isValid()) return res.status(400).json(seler.validVect());
+        const sql = `insert into selerMan (name,description,imgPath)
+        values ('${seler.name}','${seler.description}','${seler.imgPath}')`;
         connection.query(sql,(err,retsult)=>{
             if(err) return res.status(400).json(err);
-            res.status(200).json(retsult);
+            res.status(200).json(seler.validVect());
         })
     }
     
