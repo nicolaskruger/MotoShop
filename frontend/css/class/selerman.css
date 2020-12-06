@@ -1,11 +1,17 @@
+:root{
+    --imgWidth: 300px;
+    --imgPadding: 40px;
+    --imgVwidth: 80vw;
+    --imgVpadding: 10vw;
+}
 .Selerman{
     display: grid;
     grid-template-columns: 1fr 5fr;
-    padding: 40px;
+    padding: var(--imgPadding) var(--imgPadding) 10px var(--imgPadding);
     gap: 20px;
 }
 .Selerman__img{
-    width: 300px;
+    width: var(--imgWidth);
 }
 .Selerman__h1{
     margin-bottom: 20px;
@@ -14,9 +20,38 @@
 .Selerman_h2{
     word-wrap: break-word;
 }
+.Operator{
+    width: var(--imgWidth);
+    margin-left: var(--imgPadding);
+    display: flex;
+    justify-content: space-around;
+}
+.Operator__img{
+    width: 40px;
+    transition: 100ms;
+    cursor: pointer;
+}
+.Operator__img:hover{
+    opacity: 0.7;
+}
 @media only screen and (max-width: 600px) {
     .Selerman{
         display: flex;
         flex-direction: column;
     }
+
+  }
+@media only screen and (max-width: 380px) {
+    .Selerman{
+        padding: var(--imgVpadding);
+    }
+    .Selerman__img{
+        width: var(--imgVwidth);
+        
+    }
+    .Operator{
+        width: var(--imgVwidth);
+        margin-left: var(--imgVpadding);
+    }
+
   }

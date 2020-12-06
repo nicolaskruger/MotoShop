@@ -15,12 +15,13 @@ class MotorShopController extends Controller_1.Controller {
     constructor() {
         super();
         this.viewPage = new ViewPage_1.ViewPage(this.$('.principal'));
-        // this.includeMan();
-        this.selectMan(2);
+        this.includeMan(1);
+        // this.selectMan(1);
     }
-    includeMan() {
+    includeMan(idBack) {
         this.viewPage.includeHtml(Pages_1.default.selerManInclude)
             .then(() => {
+            document.querySelector('.imgBack').addEventListener('click', this.selectMan.bind(this, idBack));
             document.querySelector('.ISF').addEventListener("submit", this.includePushMan.bind(this));
         });
     }
@@ -29,8 +30,13 @@ class MotorShopController extends Controller_1.Controller {
         new HttpSselerman_1.HttpSselerman().
             postSeler(selerman_1.SelerMan.constructor_001(new IMselerman_1.IMselerman('.inpS').getValues()))
             .then(s => s.json())
-            .catch(s => s.json())
             .then(s => {
+            new MsgList_1.MsgList('.MsgSeler')
+                .setMsg(...s[0]);
+            document.querySelector('.imgBack').addEventListener('click', this.selectMan.bind(this, parseInt(s[1])));
+        })
+            .catch(s => { throw s.json(); })
+            .catch(s => {
             new MsgList_1.MsgList('.MsgSeler')
                 .setMsg(...s);
         });
@@ -38,6 +44,7 @@ class MotorShopController extends Controller_1.Controller {
     selectMan(id) {
         this.viewPage.includeHtml(Pages_1.default.selerManView)
             .then(() => {
+            document.querySelector('.imgAdd').addEventListener('click', this.includeMan.bind(this, id));
             new HttpSselerman_1.HttpSselerman().getSelerByID(id)
                 .then(s => {
                 new ViewSelerMan_1.ViewSelerman(this.$('.seler')).set(s);

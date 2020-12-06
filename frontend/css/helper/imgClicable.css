@@ -1,0 +1,9 @@
+.imgClick{
+    width: 40px;
+    height: 40px;
+    transition: 100ms;
+    cursor: pointer;
+}
+.imgClick:hover{
+    opacity: 0.7;
+}

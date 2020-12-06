@@ -1,12 +1,17 @@
+
 .ISelerman{
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
+.ISelerman__img{
+  align-self: flex-end;
+}
 .ISelerman__form{
     display: flex;
     flex-direction: column;
 }
+
 
 @media only screen and (max-width: 600px) {
     .InputSelerman{

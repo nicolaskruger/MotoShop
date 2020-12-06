@@ -13,12 +13,13 @@ export class MotorShopController extends Controller{
     imSelerman:IMselerman;
     constructor(){
         super();
-        // this.includeMan();
-        this.selectMan(2);
+        this.includeMan(1);
+        // this.selectMan(1);
     }
-    includeMan(){
+    includeMan(idBack ?:number){
         this.viewPage.includeHtml(pages.selerManInclude)
                     .then(()=>{
+                        document.querySelector('.imgBack').addEventListener('click',this.selectMan.bind(this,idBack));
                         document.querySelector('.ISF').addEventListener("submit",this.includePushMan.bind(this))
                     })            
     }
@@ -29,8 +30,13 @@ export class MotorShopController extends Controller{
                                 new IMselerman('.inpS').getValues())
             )
             .then(s=>s.json())
-            .catch(s=>(s as Response).json())
             .then(s=>{
+                new MsgList('.MsgSeler')
+                        .setMsg(...s[0]);
+                document.querySelector('.imgBack').addEventListener('click',this.selectMan.bind(this,parseInt(s[1]))); 
+            })
+            .catch(s=>{throw (s as Response).json()})
+            .catch(s=>{
                 new MsgList('.MsgSeler')
                         .setMsg(...s);
             });
@@ -39,7 +45,7 @@ export class MotorShopController extends Controller{
     selectMan(id:number){
         this.viewPage.includeHtml(pages.selerManView)
                     .then(()=>{
-                        
+                        document.querySelector('.imgAdd').addEventListener('click',this.includeMan.bind(this,id))
                         new HttpSselerman().getSelerByID(id)
                             .then(s=>{
                                 new ViewSelerman(this.$('.seler')).set(s)

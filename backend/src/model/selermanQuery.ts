@@ -33,9 +33,9 @@ class SelerManQuery{
         if(!seler.isValid()) return res.status(400).json(seler.validVect());
         const sql = `insert into selerMan (name,description,imgPath)
         values ('${seler.name}','${seler.description}','${seler.imgPath}')`;
-        connection.query(sql,(err,retsult)=>{
+        connection.query(sql,(err,result)=>{
             if(err) return res.status(400).json(err);
-            res.status(200).json(seler.validVect());
+            res.status(200).json([seler.validVect(),result.insertId]);
         })
     }
     
