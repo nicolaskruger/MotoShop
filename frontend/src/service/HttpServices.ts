@@ -38,6 +38,13 @@ export class HttpService {
         })
             .then(res=>this._handleErros(res));
     }
+    putFD(url,dado){
+        return fetch(url,{
+            method: 'put',
+            body: dado
+        })
+            .then(res=>this._handleErros(res));
+    }
     del(url){
         return fetch(url,{
             headers:{'Content-type':'application/json'},

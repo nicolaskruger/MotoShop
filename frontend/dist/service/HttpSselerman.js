@@ -5,11 +5,20 @@ class HttpSselerman extends HttpServices_1.HttpService {
     get selerRoute() {
         return this.route() + 'selerman/';
     }
+    get selerNameRoute() {
+        return this.route() + 'selermanName/';
+    }
     getSelerByID(id) {
         return this.get(`${this.selerRoute}${id}`);
     }
+    getSelerByName(name) {
+        return this.get(`${this.selerNameRoute}${name}`);
+    }
     postSeler(seler) {
         return this.postFD(`${this.selerRoute}`, seler.toFormData());
+    }
+    putSeler(seler) {
+        return this.putFD(`${this.selerRoute}${seler.id}`, seler.toFormData());
     }
 }
 exports.HttpSselerman = HttpSselerman;

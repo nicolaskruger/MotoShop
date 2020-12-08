@@ -10,12 +10,14 @@ class IMselerman extends InputManager_1.InputManager {
             (n) => n.files[0]
         ];
     }
+    needValue(i, inp) {
+        throw new Error("Method not implemented.");
+    }
     getValues() {
         return Array.from(this.inputs)
             .map((s, i) => {
             if (s.files != null)
-                console.log(s.files[0]);
-            return this.getNeddedValu[i](s);
+                return this.getNeddedValu[i](s);
         });
     }
 }

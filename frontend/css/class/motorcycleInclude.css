@@ -1,0 +1,43 @@
+:root{
+    --numColunm: 5;
+    --diW: calc(50vw/var(--numColunm));
+}
+.SelerFound{
+    display: grid;
+    grid-template-columns: repeat(var(--numColunm),1fr);
+    gap: 1vw;
+    margin-top: 10px;
+}
+.SelerFound__div{
+    cursor: pointer;
+    width: var(--diW);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-cropper {
+    width: var(--diW);
+    height: var(--diW);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+.SelerFound__img{
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    :root{
+        --numColunm: 4;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    :root{
+        --numColunm: 3;
+    }
+  }

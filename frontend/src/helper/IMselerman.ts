@@ -1,11 +1,13 @@
 import { InputManager } from "./InputManager";
 
 export class IMselerman extends InputManager{
+    needValue(i: number, inp: HTMLInputElement) {
+        throw new Error("Method not implemented.");
+    }
     getValues() {
         return Array.from(this.inputs)
                     .map((s,i)=>{
                         if(s.files!=null)
-                        console.log(s.files[0]);
                         return this.getNeddedValu[i](s);
                     });
     }

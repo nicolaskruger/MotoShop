@@ -1,0 +1,25 @@
+<div class="Include">
+    <form class="Include__form ISM" action="/motorcycle" method="POST" enctype="multipart/form-data">
+        <img class="Include__img imgClick imgBack" src="https://static.thenounproject.com/png/6447-200.png" alt="close">
+        <p class="SuccessMsg MsgSeler"></p>
+        <label class="Label" for="name">Name</label> 
+        <p class="ErroMsg MsgSeler"></p>
+        <input class="Input inpM" type="text" name="name" required>
+        <label class="Label" for="description">Descriptions</label>
+        <p class="ErroMsg MsgSeler"></p>
+        <textarea class="Input inpM" name="description" id="" cols="30" rows="10" required></textarea>
+        <label class="Label"  for="imgSeler">Img</label>
+        <p class="ErroMsg MsgSeler"></p>
+        <input class="Input inpM" type="file" name="imgSeler" accept="image/*" required >
+        <label class="Label"  for="imgSeler">Price</label>
+        <p class="ErroMsg MsgSeler"></p>
+        <input class="Input inpM" type="number" name="price" required >
+        <label class="Label" for="">Filter by name them select the seler</label>
+        <input class="Input Filter" type="text" name="idSeler" required>
+        <input class="Input inpM inpId" type="number" name="" id="" disabled="disabled">
+        <section class="SelerFound SF">
+            
+        </section>
+        <button class="Push PushS">Send</button>
+    </form>
+</div>

@@ -1,0 +1,59 @@
+:root{
+    --motoW: 80vw;
+    --imgW: 70vw;
+    --imgHalf: calc(var(--imgW)/2);
+    --marginW: calc((100vw - (var(--motoW)))/2);
+    --marigInSideR: calc((var(--motoW) - var(--imgW))/2);
+}
+
+.Motorcycle{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: var(--marginW);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgoldenrodyellow;
+    border-radius: 20px;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    width: var(--motoW);
+    align-self: flex-end;
+}
+.Motorcycle__img{
+    width: var(--imgW);
+}
+.Motorcycle__h1{
+    font-weight: bold;
+}
+.Motorcycle__h1,.Motorcycle__h2{
+    margin-bottom: 10px;
+    margin-left: var(--marigInSideR);
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+.Motorcycle__seler{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.Motorcycle__seler__img{
+    width: var(--imgHalf);
+}
+.Motorcycle__operator{
+    margin-top: 5vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: var(--imgW);
+}
+@media only screen and (min-width: 1000px) {
+    :root{
+        --motoW: 800px;
+        --imgW: 700px;
+        --imgHalf: calc(var(--imgW)/2);
+        --marginW: calc((100vw - (var(--motoW)))/2);
+        --marigInSideR: calc((var(--motoW) - var(--imgW))/2);
+    }
+
+}

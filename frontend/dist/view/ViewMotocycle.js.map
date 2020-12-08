@@ -1,0 +1,1 @@
+{"version":3,"file":"ViewMotocycle.js","sourceRoot":"","sources":["../../src/view/ViewMotocycle.ts"],"names":[],"mappings":";;AACA,iCAA8B;AAE9B,MAAa,aAAc,SAAQ,WAAI;IACzB,QAAQ,CAAC,MAAiB;QAChC,OAAO;2DAC4C,MAAM,CAAC,EAAE;qCAC/B,MAAM,CAAC,IAAI;qCACX,MAAM,CAAC,WAAW;wCACf,MAAM,CAAC,KAAK;;oEAEgB,MAAM,CAAC,OAAO;;;;;;;;;SASzE,CAAA;IACL,CAAC;CAEJ;AApBD,sCAoBC"}

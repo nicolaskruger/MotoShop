@@ -1,0 +1,20 @@
+.Include{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.Include__img{
+  align-self: flex-end;
+}
+.Include__form{
+    display: flex;
+    flex-direction: column;
+}
+
+ 
+@media only screen and (max-width: 600px) {
+    .Input,.Label{
+        width: 60vw;
+    }
+  }

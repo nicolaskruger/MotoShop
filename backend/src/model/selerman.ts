@@ -1,5 +1,6 @@
 export class SelerMan{
     static dir:string = `${__dirname}/../../archives/img/`;
+    static newDir:string = SelerMan.dir+'/selerman/'
     id ?:number;
     name ?:string;
     description ?:string;
@@ -23,11 +24,12 @@ export class SelerMan{
     }
     constructor(name ?:string,
         description ?:string,
-        imgPath ?:string,){
+        imgPath ?:string,
+        id ?:number){
             this.name = name;
             this.description = description;
             this.imgPath = imgPath;
-
+            this.id = id;
     }
     isValid(){
         return this.valid.reduce((s,t,i)=>{
