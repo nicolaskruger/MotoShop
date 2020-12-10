@@ -34,9 +34,9 @@ export class MotorShopController extends MotorAuxController{
     ]
     constructor(){
         super();
-        // this.mainScree();
+        this.mainScree();
         // this.includeMoto(1);
-        this.selectMan(1);
+        // this.selectMan(1);
     }
     // select moto by id
     selectMotor(id:number){
@@ -44,9 +44,16 @@ export class MotorShopController extends MotorAuxController{
                     .then(()=>{
                         new HttpMotocycle()
                             .getMotocycleById(id)
-                            .then(s=>{
+                            .then((s:Motocycle)=>{
                                 new ViewMotocycle(this.$(".Moto"))
                                     .set(s);
+                                document.querySelector(".imgDelete")
+                                        .addEventListener("click",()=>{
+                                            new HttpMotocycle().delete(s.id)
+                                                .then(()=>{
+                                                    this.mainScree();
+                                                })
+                                        })
                                 document.querySelector(".MotoSeler")
                                         .addEventListener("click",this.selectMan.bind(this,s.idSeler))
                                 document.querySelector(".imgBack")
@@ -211,6 +218,13 @@ export class MotorShopController extends MotorAuxController{
                     })
                     .then((s:SelerMan)=>{
                         new ViewSelerman(this.$('.seler')).set(s)
+                        document.querySelector(".imgDelete")
+                                        .addEventListener("click",()=>{
+                                            new HttpSselerman().delete(s.id)
+                                                .then(()=>{
+                                                    this.mainScree();
+                                                })
+                                        })
                         document.querySelector('.imgUpdate').addEventListener('click',this.updateMan.bind(this,s));
                         this.OperMain(()=>new HttpMotocycle().getMotoBySeler(s.id));
                     })
@@ -252,7 +266,6 @@ export class MotorShopController extends MotorAuxController{
     OperMain(func:()=>Promise<any>){
             func()
             .then((s:Motocycle[])=>{
-                console.log(s);
                 new ViewMotoMain(this.$(".MainMoto")).set(s);
                 let div = document.querySelectorAll(".MainMoto__square");
                 s.forEach((ss,i)=>{

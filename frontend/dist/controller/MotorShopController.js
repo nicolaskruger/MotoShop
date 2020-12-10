@@ -30,9 +30,9 @@ class MotorShopController extends MotorAuxController_1.MotorAuxController {
             () => { this.filterByName(); },
             () => { this.filterByPrice(); },
         ];
-        // this.mainScree();
+        this.mainScree();
         // this.includeMoto(1);
-        this.selectMan(1);
+        // this.selectMan(1);
     }
     // select moto by id
     selectMotor(id) {
@@ -40,9 +40,16 @@ class MotorShopController extends MotorAuxController_1.MotorAuxController {
             .then(() => {
             new HttpMotocycle_1.HttpMotocycle()
                 .getMotocycleById(id)
-                .then(s => {
+                .then((s) => {
                 new ViewMotocycle_1.ViewMotocycle(this.$(".Moto"))
                     .set(s);
+                document.querySelector(".imgDelete")
+                    .addEventListener("click", () => {
+                    new HttpMotocycle_1.HttpMotocycle().delete(s.id)
+                        .then(() => {
+                        this.mainScree();
+                    });
+                });
                 document.querySelector(".MotoSeler")
                     .addEventListener("click", this.selectMan.bind(this, s.idSeler));
                 document.querySelector(".imgBack")
@@ -185,6 +192,13 @@ class MotorShopController extends MotorAuxController_1.MotorAuxController {
         })
             .then((s) => {
             new ViewSelerMan_1.ViewSelerman(this.$('.seler')).set(s);
+            document.querySelector(".imgDelete")
+                .addEventListener("click", () => {
+                new HttpSselerman_1.HttpSselerman().delete(s.id)
+                    .then(() => {
+                    this.mainScree();
+                });
+            });
             document.querySelector('.imgUpdate').addEventListener('click', this.updateMan.bind(this, s));
             this.OperMain(() => new HttpMotocycle_1.HttpMotocycle().getMotoBySeler(s.id));
         });
@@ -223,7 +237,6 @@ class MotorShopController extends MotorAuxController_1.MotorAuxController {
     OperMain(func) {
         func()
             .then((s) => {
-            console.log(s);
             new ViewMotoMain_1.ViewMotoMain(this.$(".MainMoto")).set(s);
             let div = document.querySelectorAll(".MainMoto__square");
             s.forEach((ss, i) => {

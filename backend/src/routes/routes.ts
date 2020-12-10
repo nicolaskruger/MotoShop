@@ -55,4 +55,10 @@ routes.get('/motorcyclePrice/:price',(req,res)=>{
 routes.get('/motorcycleSeler/:id',(req,res)=>{
     motorcycle.selectByIdSeler(parseInt(req.params.id),res);
 })
+routes.delete('/motorcycle/:id',(req,res)=>{
+    motorcycle.delete(parseInt(req.params.id),res);
+});
+routes.delete('/selerman/:id',(req,res)=>{
+    selerman.delete(parseInt(req.params.id),res);
+});
 export default routes;  

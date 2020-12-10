@@ -20,6 +20,9 @@ class HttpSselerman extends HttpServices_1.HttpService {
     putSeler(seler) {
         return this.putFD(`${this.selerRoute}${seler.id}`, seler.toFormData());
     }
+    delete(id) {
+        return this.del(`${this.selerRoute}${id}`);
+    }
 }
 exports.HttpSselerman = HttpSselerman;
 //# sourceMappingURL=HttpSselerman.js.map

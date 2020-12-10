@@ -3,6 +3,7 @@ import {Response} from 'express';
 import { SelerMan } from './selerman'
 import fs from 'fs';
 import path from 'path';
+import { Motorcycle } from './motorcycle';
 
 class SelerManQuery{
     selectAll(res:Response){
@@ -84,6 +85,25 @@ class SelerManQuery{
             })
         }
         
+    }
+    delete(id:number,res:Response){
+        const sql01 = `select * from motorcycle where idSeler = ${id}`
+        const sql02 = `delete from motorcycle where idSeler = ${id};`
+        const sql03 = `delete from selerMan where id = ${id};`
+
+        connection.query(sql01,(err,result:Motorcycle[])=>{
+            result.forEach(moto=>{
+                try{fs.unlinkSync(Motorcycle.newDir+moto.imgPath)}
+                catch(err){console.log(err)}
+            })
+            connection.query(sql02,(err,result)=>{
+                if(err) return res.status(400).json(err);
+                connection.query(sql03,(err,result)=>{
+                    if(err) return res.status(400).json(err);
+                    res.status(200).redirect('/');
+                })
+            })
+        })
     }
     
 }

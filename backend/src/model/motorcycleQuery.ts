@@ -90,6 +90,18 @@ class MotorcycleQuery{
         }
         let stop;
     }
+    delete(id:number,res:Response){
+        const query = `select * from motorcycle where id = ${id};`
+        connection.query(query,(err,result)=>{
+            try{fs.unlinkSync(Motorcycle.newDir+result[0].imgPath)}
+            catch(err){console.log(err)}
+            const sql = `delete from motorcycle where id = ${id};`
+            connection.query(sql,(err,result)=>{
+                if(err) return res.status(400).json(err);
+                res.status(200).redirect('/');
+            })  
+        })
+    }
 }
 
 export default new MotorcycleQuery;

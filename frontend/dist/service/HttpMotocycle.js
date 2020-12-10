@@ -35,6 +35,9 @@ class HttpMotocycle extends HttpServices_1.HttpService {
     putMoto(moto, id) {
         return this.putFD(`${this.motoRoute}${id}`, moto.toFormData());
     }
+    delete(id) {
+        return this.del(`${this.motoRoute}${id}`);
+    }
 }
 exports.HttpMotocycle = HttpMotocycle;
 //# sourceMappingURL=HttpMotocycle.js.map

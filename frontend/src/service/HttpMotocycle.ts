@@ -35,5 +35,8 @@ export class HttpMotocycle extends HttpService{
     putMoto(moto:Motocycle,id:number){
         return this.putFD(`${this.motoRoute}${id}`,moto.toFormData());
     }
+    delete(id:number){
+        return this.del(`${this.motoRoute}${id}`);
+    }
 
 }

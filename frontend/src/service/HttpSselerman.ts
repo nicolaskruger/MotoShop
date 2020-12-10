@@ -20,4 +20,7 @@ export class HttpSselerman extends HttpService{
     putSeler(seler:SelerMan){
         return this.putFD(`${this.selerRoute}${seler.id}`,seler.toFormData());
     }
+    delete(id:number){
+        return this.del(`${this.selerRoute}${id}`);
+    }
 } 
