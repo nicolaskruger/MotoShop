@@ -4,7 +4,7 @@ const View_1 = require("./View");
 class ViewMotocycle extends View_1.View {
     template(models) {
         return `
-        <img class="Motorcycle__img" src="/motorcycleImg/${models.id}" alt="">
+        <img class="Motorcycle__img" src="/motorcycleImg/${models.id}?dummy=${Math.random() * (999 - 100) + 100}" alt="">
         <h1 class="Motorcycle__h1">${models.name}</h1>
         <h2 class="Motorcycle__h2">${models.description}</h2>
         <h2 class="Motorcycle__h2">R$ ${models.price}</h2>

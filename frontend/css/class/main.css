@@ -1,0 +1,82 @@
+:root{
+    --diWW:200px;
+    --numColun:6;
+}
+
+.Options{
+    margin-top: 2vw;
+    margin-right: 2vw;
+    display: flex;
+    justify-content: flex-end;
+}
+.Options__button{
+
+}
+.Options__button:focus{
+    background-color: thistle;
+    border: none;
+}
+.MainMoto{
+    margin-top: 2vw;
+    display: grid;
+    grid-template-columns: repeat(var(--numColun),1fr);
+    gap: 2vw;
+    margin-bottom: 2vw;
+}
+.MainMoto__square{
+    cursor: pointer;
+    background-color: whitesmoke;
+    justify-self: center;
+    padding-bottom: 1vw;
+    width: var(--diWW);
+    gap: 1vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    transition: 100ms;
+}
+.MainMoto__square:hover{
+    opacity: 0.8;
+}
+.MainMoto__square__box{
+    width: var(--diWW);
+    height: var(--diWW);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    /* border-radius: 50%; */
+}
+.MainMoto__img{
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+@media only screen and (max-width: 1700px) {
+    :root{
+        --numColun: 5;
+    }
+}
+@media only screen and (max-width: 1500px) {
+    :root{
+        --numColun: 4;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    :root{
+        --numColun: 3;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    :root{
+        --numColun: 2;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    :root{
+        --numColun: 1;
+    }
+  }

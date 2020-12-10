@@ -21,6 +21,23 @@ export class MotorAuxController extends Controller{
             });
         
     }
+    operPush(event:Event,func:()=>Promise<any>,func01?:(str:string)=>void){
+        event.preventDefault();
+        func()
+            .then(s=>s.json())
+            .then(s=>{
+                new MsgList('.Msg')
+                        .setMsg(...s[0]);
+                document.querySelector('.imgBack').addEventListener('click',()=>func01(s[1])); 
+            })
+            .catch(s=>{throw (s as Response).json()})
+            .catch(s=>{
+                new MsgList('.Msg')
+                        .setMsg(...s);
+            });
+        
+    }
+    
     selectMan(id:number){
         
     }

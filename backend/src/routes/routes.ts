@@ -5,6 +5,7 @@ import motorcycle from '../model/motorcycleQuery';
 import {SelerMan} from '../model/selerman';
 import multer from 'multer';
 import {fileFilter,motoFilter,selerFilter} from '../helper/fileFilter'
+import { Motorcycle } from '../model/motorcycle';
 var uploadSeler = multer({dest: 'archives/img/selerman',
                         fileFilter:selerFilter
                     })
@@ -35,6 +36,23 @@ routes.put('/selerman/:id',uploadSeler.single('imgSeler'),(req,res)=>{
         ,req.file!=undefined?req.body.imgPath:'')
 })
 routes.post('/motorcycle',uploadMoto.single('imgMoto'),(req,res)=>{
-    moto
+    motorcycle.include(Motorcycle.constructor002(req),res);
+})
+routes.put('/motorcycle/:id',uploadMoto.single('imgMoto'),(req,res)=>{
+    let moto = Motorcycle.constructor002(req);
+    moto.id =  parseInt(req.params.id);
+    motorcycle.update(moto,res);
+})
+routes.get('/motorcycleName',(req,res)=>motorcycle.selectAll(res));
+routes.get('/motorcyclePrice',(req,res)=>motorcycle.selectAll(res));
+
+routes.get('/motorcycleName/:name',(req,res)=>{
+    motorcycle.selectByName(req.params.name,res);
+});
+routes.get('/motorcyclePrice/:price',(req,res)=>{
+    motorcycle.selectByPrice(parseInt(req.params.price),res);
+})
+routes.get('/motorcycleSeler/:id',(req,res)=>{
+    motorcycle.selectByIdSeler(parseInt(req.params.id),res);
 })
 export default routes;  

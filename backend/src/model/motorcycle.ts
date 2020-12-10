@@ -1,13 +1,16 @@
 import selermanQuery from "./selermanQuery";
 import {Request} from 'express'
+import { msgSendable } from "./msgSendable";
 
-export class Motorcycle{
+export class Motorcycle extends msgSendable{
+    static dir:string = `${__dirname}/../../archives/img/`;
+    static newDir:string = Motorcycle.dir+'/motorcycle/'
     id?:number;
     name?:string;
     description?:string;
     idSeler?:number;
     imgPath?:string;
-    price?:number;
+    price?:number; 
     constructor(
         id?:number,
         name?:string,
@@ -16,6 +19,7 @@ export class Motorcycle{
         imgPath?:string,
         price?:number,
     ){
+        super();
         this.id = id;
         this.name = name;
         this.description = description;
@@ -30,31 +34,31 @@ export class Motorcycle{
             parseFloat(req.body.price)
         )
     }
-    isValid(){
-        return this.valid.reduce((s,t,i)=>{
-            if(i==0) return true;
-            return t()&&s
-        },true);
+    static constructor002(req:Request){
+        return new Motorcycle(
+            0,req.body.name,req.body.description,
+            parseInt(req.body.idSeler),
+            req.file==undefined?undefined:req.file.filename,
+            parseFloat(req.body.price)
+        )
     }
-    static msgVect:string[]=[
+    msgVect:string[]=[
         'Send with Success',
         'name Required',
         'description Required',
-        'incorrect idSeler',
         'img required',
-        'incorrect price'
+        'incorrect price',
+        'incorrect idSeler',
     ]
     valid:(()=>boolean)[]=[
         ()=>!this.isValid(),
         ()=>this.name!='',
         ()=>this.description!='',
-        ()=>{
-            if(this.idSeler==undefined) return false;
-            return selermanQuery.selectReturn(this.idSeler)
-                        .length>0;
-        },
         ()=>this.imgPath!=undefined,
-        ()=>this.price as number>0
+        ()=>this.price as number>0,
+        ()=>this.idSeler!=undefined,
     ]
+
+
 
 }

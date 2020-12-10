@@ -7,15 +7,14 @@ export class IMselerman extends InputManager{
     getValues() {
         return Array.from(this.inputs)
                     .map((s,i)=>{
-                        if(s.files!=null)
                         return this.getNeddedValu[i](s);
                     });
     }
     private getNeddedValu:((n:HTMLInputElement)=>File|string)[]=[
         (n)=>n.value,
         (n)=>n.value,
-        (n)=>n.files[0]
+        (n)=>n.files!=null?n.files[0]:null
     ]
-    
+     
     
 }

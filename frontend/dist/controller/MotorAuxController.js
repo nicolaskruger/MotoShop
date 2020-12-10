@@ -18,6 +18,21 @@ class MotorAuxController extends Controller_1.Controller {
                 .setMsg(...s);
         });
     }
+    operPush(event, func, func01) {
+        event.preventDefault();
+        func()
+            .then(s => s.json())
+            .then(s => {
+            new MsgList_1.MsgList('.Msg')
+                .setMsg(...s[0]);
+            document.querySelector('.imgBack').addEventListener('click', () => func01(s[1]));
+        })
+            .catch(s => { throw s.json(); })
+            .catch(s => {
+            new MsgList_1.MsgList('.Msg')
+                .setMsg(...s);
+        });
+    }
     selectMan(id) {
     }
 }

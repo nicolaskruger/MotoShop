@@ -29,6 +29,7 @@ class SelerManQuery{
             if(err) ret = err;
             ret= result;
         })
+        console.log(ret);
         return ret;
     }
     select(id:number,res:Response){
@@ -56,29 +57,33 @@ class SelerManQuery{
         })
     }
     update(seler:SelerMan,res:Response,oldImg:string){
-        console.log(seler);
         if(seler.imgPath==undefined) seler.imgPath = '';
         if(!seler.isValid()) return res.status(400).json(seler.validVect());
-        if(oldImg!=''){
-            try {
-                fs.unlinkSync(SelerMan.newDir+oldImg)
-                console.log("old file remove with success")
-            } catch (error) {
-                console.log(error);
-            }
-        }
+
         const sql =`
         update selerMan
             set name = '${seler.name}',
                 description = '${seler.description}'
                 ${seler.imgPath==''?'':`,imgPath ='${seler.imgPath}'`}
         where id = ${seler.id};
-        `
+        `;
+        if(seler.imgPath != ''){
+            connection.query(`select imgPath from selerMan where id = ${seler.id};`,(err,result)=>{
+                fs.unlinkSync(SelerMan.newDir+result[0].imgPath)
+                console.log("old file remove with success")
+                connection.query(sql,(err,result)=>{
+                    if(err) return res.status(400).json(err);
+                    res.status(200).json([seler.validVect(),result.insertId]);
+                })
+            })
+        }
+        else{
+            connection.query(sql,(err,result)=>{
+                if(err) return res.status(400).json(err);
+                res.status(200).json([seler.validVect(),result.insertId]);
+            })
+        }
         
-        connection.query(sql,(err,result)=>{
-            if(err) return res.status(400).json(err);
-            res.status(200).json([seler.validVect(),result.insertId]);
-        })
     }
     
 }

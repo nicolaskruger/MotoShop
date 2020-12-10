@@ -7,7 +7,7 @@ class IMselerman extends InputManager_1.InputManager {
         this.getNeddedValu = [
             (n) => n.value,
             (n) => n.value,
-            (n) => n.files[0]
+            (n) => n.files != null ? n.files[0] : null
         ];
     }
     needValue(i, inp) {
@@ -16,8 +16,7 @@ class IMselerman extends InputManager_1.InputManager {
     getValues() {
         return Array.from(this.inputs)
             .map((s, i) => {
-            if (s.files != null)
-                return this.getNeddedValu[i](s);
+            return this.getNeddedValu[i](s);
         });
     }
 }

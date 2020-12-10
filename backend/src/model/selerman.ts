@@ -1,4 +1,6 @@
-export class SelerMan{
+import { msgSendable } from "./msgSendable";
+
+export class SelerMan extends msgSendable{
     static dir:string = `${__dirname}/../../archives/img/`;
     static newDir:string = SelerMan.dir+'/selerman/'
     id ?:number;
@@ -26,6 +28,7 @@ export class SelerMan{
         description ?:string,
         imgPath ?:string,
         id ?:number){
+        super();
             this.name = name;
             this.description = description;
             this.imgPath = imgPath;
